@@ -44,7 +44,7 @@ class FaqController extends BackendBaseController
     {
         $this->page_title = 'Create';
         $this->page_method = 'create';
-        return view($this->loadDataToView($this->view_path.'.create'),compact('data'));
+        return view($this->loadDataToView($this->view_path.'.create'));
     }
 
     /**

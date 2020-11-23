@@ -10,8 +10,7 @@
       <div class="box-header with-border">
         <h3 class="box-title">
           {{$panel}} {{$page_title}}
-          <a href="{{route($base_route . '.create')}}" class="btn btn-info"> <i class="fa fa-plus"></i> Create {{$panel}} </a>
-        </h3>
+         </h3>
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                   title="Collapse">
@@ -26,8 +25,8 @@
           <thead>
             <tr>
               <th>SN</th>
-              <th>Name</th>
-                <th>Profession</th>
+              <th> Full Name</th>
+                <th>Email</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -36,8 +35,8 @@
           @foreach ($data['rows'] as $key => $row)
             <tr>
               <td>{{$key+1}}</td>
-              <td>{{$row->name}}</td>
-                <td>{{$row->profession}}</td>
+              <td>{{$row->fullName}}</td>
+                <td>{{$row->email}}</td>
               <td>
                 @if ($row->status == 1)
                   <span class="label label-success">Active</span>
@@ -48,8 +47,8 @@
               <td>
                 <a href="{{route( $base_route . '.edit',$row->id)}}" class="btn btn-info">Edit</a>
                 <a href="{{route($base_route . '.show',$row->id)}}" class="btn btn-info">Show</a>
-                {!! Form::open(['route' => [$base_route . '.destroy',$row->id], 'method' => 'delete','onsubmit' => "return confirm('are you sure to delete?')"]) !!}
-                {!! Form::submit('Delete',['class' => 'btn btn-danger']) !!}
+{{--                {!! Form::open(['route' => [$base_route . '.destroy',$row->id], 'method' => 'delete','onsubmit' => "return confirm('are you sure to delete?')"]) !!}--}}
+{{--                {!! Form::submit('Delete',['class' => 'btn btn-danger']) !!}--}}
                 {!! Form::close() !!}
               </td>
             </tr>
