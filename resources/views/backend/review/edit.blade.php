@@ -38,7 +38,7 @@
           </div>
         @endif
 {{--        {!! Form::open(['route' => ['backend.tag.update',$data['row']->id], 'method' => 'post']) !!}--}}
-       {!! Form::model($data['row'], ['route' => [$base_route.'.update', $data['row']->id],'method' => 'PUT']) !!}
+       {!! Form::model($data['row'], ['route' => [$base_route.'.update', $data['row']->id],'method' => 'PUT','files' =>true]) !!}
         @include($view_path . '.include.main_form',['button' => 'Update ' . $panel])
         {!! Form::close() !!}
       </div>

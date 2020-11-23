@@ -115,6 +115,8 @@ class ReviewController extends BackendBaseController
      */
     public function update(Request $request, $id)
     {
+        $image = $this->uploadImage($request,'review_image');
+        $request->request->add(['image' => $image]);
         $data['row'] = Review::find($id);
         $request->request->add(['updated_by' => auth()->user()->id]);
         $data['row']->update($request->all());
