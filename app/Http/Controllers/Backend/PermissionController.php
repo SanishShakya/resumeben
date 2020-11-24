@@ -2,30 +2,19 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\UserRequest;
-use App\Model\Role;
-use App\User;
-use Illuminate\Database\DatabaseManager;
+use App\Http\Requests\Backend\PermissionRequest;
+use App\Model\Module;
+use App\Model\Permission;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Mockery\Exception;
 
-class UserController extends BackendBaseController
+class PermissionController extends BackendBaseController
 {
 
-    protected $base_route  = 'backend.user';
-    protected $view_path   = 'backend.user';
-    protected $panel       = 'User';
-    protected  $page_title,$page_method,$image_path;
-    protected  $folder_name = 'user';
-    protected $databaseManager;
-
-
-    function  __construct(DatabaseManager $databaseManager)
-    {
-        $this->databaseManager = $databaseManager;
-        $this->image_path = public_path().DIRECTORY_SEPARATOR.'backend'.DIRECTORY_SEPARATOR.'images' . DIRECTORY_SEPARATOR.$this->folder_name.DIRECTORY_SEPARATOR;
-    }
+    protected $base_route  = 'backend.permission';
+    protected $view_path   = 'backend.permission';
+    protected $panel       = 'Permission';
+    protected  $page_title,$page_method;
 
     /**
      * Display a listing of the resource.
@@ -38,8 +27,9 @@ class UserController extends BackendBaseController
         $this->page_method = 'index';
 
         try{
-            $data['rows'] = User::all();
+            $data['rows'] = Permission::all();
             return view($this->loadDataToView($this->view_path.'.index'),compact('data'));
+//            return view('backend.tag.index',compact('data'));
         }catch (Exception $e) {
             redirect()->route('home')->flash('exception', $e->getMessage());
         }
@@ -54,8 +44,7 @@ class UserController extends BackendBaseController
     {
         $this->page_title = 'Create';
         $this->page_method = 'create';
-        $data['roles'] = Role::pluck('name','id');
-
+        $data['modules'] = Module::pluck('name','id');
         return view($this->loadDataToView($this->view_path.'.create'),compact('data'));
     }
 
@@ -65,18 +54,15 @@ class UserController extends BackendBaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(PermissionRequest $request)
     {
-
         try{
-            $request->request->add(['created_by' =>auth()->user()->id]);
-            $request->request->add(['password' => Hash::make($request->password)]);
-            $record = User::create($request->all());
-
+            $request->request->add(['created_by' => auth()->user()->id]);
+            $record = Permission::create($request->all());
             if ($record){
                 return redirect()->route($this->base_route . '.index')->with('success',$this->panel . ' created successfully');
 
-            }else{
+            } else {
                 return back()->with('error', $this->panel . ' creation failed');
             }
         } catch(Exception $e){
@@ -94,7 +80,7 @@ class UserController extends BackendBaseController
     {
         $this->page_title = 'View';
         $this->page_method = 'show';
-        $data['row'] = User::find($id);
+        $data['row'] = Permission::find($id);
 
         return view($this->loadDataToView($this->view_path.'.show'),compact('data'));
     }
@@ -109,8 +95,8 @@ class UserController extends BackendBaseController
     {
         $this->page_title = 'Edit';
         $this->page_method = 'edit';
-        $data['roles'] = Role::pluck('name','id');
-        $data['row'] = User::find($id);
+        $data['row'] = Permission::find($id);
+        $data['modules'] = Module::pluck('name','id');
         return view($this->loadDataToView($this->view_path.'.edit'),compact('data'));
     }
 
@@ -123,8 +109,7 @@ class UserController extends BackendBaseController
      */
     public function update(Request $request, $id)
     {
-        $data['row'] = User::find($id);
-        $request->request->add(['password' => Hash::make($request->password)]);
+        $data['row'] = Permission::find($id);
         $request->request->add(['updated_by' => auth()->user()->id]);
         $data['row']->update($request->all());
         return redirect()->route($this->base_route . '.index')->with('success',$this->panel . ' updated successfully');;
@@ -140,7 +125,7 @@ class UserController extends BackendBaseController
     public function destroy($id)
     {
         try{
-            User::destroy($id);
+            Permission::destroy($id);
             return redirect()->route($this->base_route . '.index')->with('success',$this->panel . ' deleted successfully');
         } catch (Exception $exception){
             return redirect()->route($this->base_route . '.index')->with('exception',$exception->getMessage());

@@ -24,7 +24,7 @@
     <div class="horizontal-menu">
         <nav class="navbar top-navbar col-lg-12 col-12">
             <div class="container-fluid">
-                <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">
+{{--                <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">--}}
                     <ul class="navbar-nav navbar-nav-left">
 
                     </ul>
@@ -74,6 +74,45 @@
                             <ul>
                                 <li class="nav-item"><a class="nav-link" href="{{route('backend.user.create')}}"><i class="mdi mdi-library-plus"></i>Add User</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{route('backend.user.index')}}"><i class="mdi mdi-view-list"></i> List User</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('backend.role.index')}}" class="nav-link">
+                            <i class="mdi mdi-cube-outline menu-icon"></i>
+                            <span class="menu-title">Roles Management</span>
+                            {{--                            <i class="menu-arrow"></i>--}}
+                        </a>
+                        <div class="submenu">
+                            <ul>
+                                <li class="nav-item"><a class="nav-link" href="{{route('backend.role.create')}}"><i class="mdi mdi-library-plus"></i>Add Role</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('backend.role.index')}}"><i class="mdi mdi-view-list"></i> List Role</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('backend.module.index')}}" class="nav-link">
+                            <i class="mdi mdi-cube-outline menu-icon"></i>
+                            <span class="menu-title">Modules Management</span>
+                            {{--                            <i class="menu-arrow"></i>--}}
+                        </a>
+                        <div class="submenu">
+                            <ul>
+                                <li class="nav-item"><a class="nav-link" href="{{route('backend.module.create')}}"><i class="mdi mdi-library-plus"></i>Add Module</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('backend.module.index')}}"><i class="mdi mdi-view-list"></i> List Module</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('backend.permission.index')}}" class="nav-link">
+                            <i class="mdi mdi-cube-outline menu-icon"></i>
+                            <span class="menu-title">Permissions Management</span>
+                            {{--                            <i class="menu-arrow"></i>--}}
+                        </a>
+                        <div class="submenu">
+                            <ul>
+                                <li class="nav-item"><a class="nav-link" href="{{route('backend.permission.create')}}"><i class="mdi mdi-library-plus"></i>Add Permission</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('backend.permission.index')}}"><i class="mdi mdi-view-list"></i> List Permission</a></li>
                             </ul>
                         </div>
                     </li>

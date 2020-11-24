@@ -2,30 +2,20 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\UserRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\RoleRequest;
+use App\Model\Module;
 use App\Model\Role;
-use App\User;
-use Illuminate\Database\DatabaseManager;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Mockery\Exception;
 
-class UserController extends BackendBaseController
+class RoleController extends BackendBaseController
 {
 
-    protected $base_route  = 'backend.user';
-    protected $view_path   = 'backend.user';
-    protected $panel       = 'User';
-    protected  $page_title,$page_method,$image_path;
-    protected  $folder_name = 'user';
-    protected $databaseManager;
-
-
-    function  __construct(DatabaseManager $databaseManager)
-    {
-        $this->databaseManager = $databaseManager;
-        $this->image_path = public_path().DIRECTORY_SEPARATOR.'backend'.DIRECTORY_SEPARATOR.'images' . DIRECTORY_SEPARATOR.$this->folder_name.DIRECTORY_SEPARATOR;
-    }
+    protected $base_route  = 'backend.role';
+    protected $view_path   = 'backend.role';
+    protected $panel       = 'Role';
+    protected  $page_title,$page_method;
 
     /**
      * Display a listing of the resource.
@@ -38,8 +28,9 @@ class UserController extends BackendBaseController
         $this->page_method = 'index';
 
         try{
-            $data['rows'] = User::all();
+            $data['rows'] = Role::all();
             return view($this->loadDataToView($this->view_path.'.index'),compact('data'));
+//            return view('backend.tag.index',compact('data'));
         }catch (Exception $e) {
             redirect()->route('home')->flash('exception', $e->getMessage());
         }
@@ -54,9 +45,7 @@ class UserController extends BackendBaseController
     {
         $this->page_title = 'Create';
         $this->page_method = 'create';
-        $data['roles'] = Role::pluck('name','id');
-
-        return view($this->loadDataToView($this->view_path.'.create'),compact('data'));
+        return view($this->loadDataToView($this->view_path.'.create'));
     }
 
     /**
@@ -65,21 +54,19 @@ class UserController extends BackendBaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(RoleRequest $request)
     {
-
         try{
-            $request->request->add(['created_by' =>auth()->user()->id]);
-            $request->request->add(['password' => Hash::make($request->password)]);
-            $record = User::create($request->all());
-
+            $request->request->add(['created_by' => auth()->user()->id]);
+            $record = Role::create($request->all());
             if ($record){
                 return redirect()->route($this->base_route . '.index')->with('success',$this->panel . ' created successfully');
 
-            }else{
+            } else {
                 return back()->with('error', $this->panel . ' creation failed');
             }
         } catch(Exception $e){
+            return redirect()->route($this->base_route . '.index')->with('exception',$e->getMessage());
             return redirect()->route($this->base_route . '.index')->with('exception',$e->getMessage());
         }
     }
@@ -94,7 +81,7 @@ class UserController extends BackendBaseController
     {
         $this->page_title = 'View';
         $this->page_method = 'show';
-        $data['row'] = User::find($id);
+        $data['row'] = Role::find($id);
 
         return view($this->loadDataToView($this->view_path.'.show'),compact('data'));
     }
@@ -109,8 +96,7 @@ class UserController extends BackendBaseController
     {
         $this->page_title = 'Edit';
         $this->page_method = 'edit';
-        $data['roles'] = Role::pluck('name','id');
-        $data['row'] = User::find($id);
+        $data['row'] = Role::find($id);
         return view($this->loadDataToView($this->view_path.'.edit'),compact('data'));
     }
 
@@ -123,8 +109,7 @@ class UserController extends BackendBaseController
      */
     public function update(Request $request, $id)
     {
-        $data['row'] = User::find($id);
-        $request->request->add(['password' => Hash::make($request->password)]);
+        $data['row'] = Role::find($id);
         $request->request->add(['updated_by' => auth()->user()->id]);
         $data['row']->update($request->all());
         return redirect()->route($this->base_route . '.index')->with('success',$this->panel . ' updated successfully');;
@@ -140,11 +125,43 @@ class UserController extends BackendBaseController
     public function destroy($id)
     {
         try{
-            User::destroy($id);
+            Role::destroy($id);
             return redirect()->route($this->base_route . '.index')->with('success',$this->panel . ' deleted successfully');
         } catch (Exception $exception){
             return redirect()->route($this->base_route . '.index')->with('exception',$exception->getMessage());
         }
 
     }
+
+    public function showPermission($id){
+        $this->page_title = 'Assign';
+        $this->page_method = 'permission';
+        $data['role'] = Role::find($id);
+        $data['modules'] = Module::all();
+        $assigned_permissions = [];
+        foreach ($data['role']->permissions as $permission){
+            array_push($assigned_permissions,$permission->id);
+        }
+        $data['assigned_permissions'] = $assigned_permissions;
+        return view($this->loadDataToView($this->view_path.'.permission'),compact('data'));
+    }
+
+    public function assignPermission(Request $request)
+    {
+        try{
+            $data['role'] = Role::find($request->role_id);
+            if ($data['role']->permissions()->sync($request->input('permission_id'))){
+                return redirect()->route($this->base_route . '.index')->with('success', 'Permissions assigned successfully');
+
+            } else {
+                return back()->with('error', ' Permissions assign failed');
+            }
+        } catch(Exception $e){
+            return redirect()->route($this->base_route . '.index')->with('exception',$e->getMessage());
+        }
+
+
+    }
+
+
 }
