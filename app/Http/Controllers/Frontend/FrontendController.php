@@ -17,7 +17,7 @@ class FrontendController extends FrontendBaseController
         $data['introductions'] = Introduction::all();
         $data['reviews'] = Review::all();
         $data['faqs'] = Faq::all();
-
+//
         return view($this->loadDataToView('frontend.frontend.index'),compact('data'));
     }
     function resume($slug){
