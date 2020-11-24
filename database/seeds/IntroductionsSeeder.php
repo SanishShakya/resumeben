@@ -28,6 +28,8 @@ class IntroductionsSeeder extends Seeder
             'status' => '1',
             'created_by' => '2',
             'image' => '20201119041026_ben.jpg',
+            'created_at' => '2020-11-01 06:03:28',
+            'slug' => 'resume_ben'
         ]);
     }
 }

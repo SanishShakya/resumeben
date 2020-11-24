@@ -44,6 +44,10 @@
                 <td>{{$data['row']->email}}</td>
             </tr>
             <tr>
+                <th>Slug</th>
+                <td>{{$data['row']->slug}}</td>
+            </tr>
+            <tr>
                 <th>Experience Title 1</th>
                 <td>{{$data['row']->expTitle1}}</td>
             </tr>

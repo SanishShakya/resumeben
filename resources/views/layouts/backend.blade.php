@@ -24,7 +24,7 @@
     <div class="horizontal-menu">
         <nav class="navbar top-navbar col-lg-12 col-12">
             <div class="container-fluid">
-               <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">--}}
+               <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">
                     <ul class="navbar-nav navbar-nav-left">
 
                     </ul>
@@ -124,7 +124,9 @@
                         </a>
                         <div class="submenu">
                             <ul>
-                               <li class="nav-item"><a class="nav-link" href="{{route('backend.information.index')}}"><i class="mdi mdi-view-list"></i> List Introduction</a></li>
+                               <li class="nav-item"><a class="nav-link" href="{{route('backend.information.create')}}"><i class="mdi mdi-view-list"></i> Create Introduction</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('backend.information.index')}}"><i class="mdi mdi-view-list"></i> List Introduction</a></li>
+
                             </ul>
                         </div>
                     </li>

@@ -16,6 +16,7 @@
         <h3 class="box-title">
           {{$panel}} {{$page_title}}
           <a href="{{route($base_route . '.index')}}" class="btn btn-success"> <i class="fa fa-list"></i> List {{$panel}} </a>
+            <a href="{{route($base_route . '.create')}}" class="btn btn-info"> <i class="fa fa-plus"></i> Create {{$panel}} </a>
         </h3>
 
         <div class="box-tools pull-right">

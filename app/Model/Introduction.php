@@ -14,7 +14,7 @@ class Introduction extends Model
     protected $table = 'introductions';
 
     protected $fillable = [
-        'fullName', 'dob', 'website', 'detail','status','email','heading','created_by','updated_by','expBody1','expTitle1','expBody2','expTitle2','expBody3','expTitle3','image'
+        'fullName', 'dob', 'website', 'detail','status','email','slug','heading','created_by','updated_by','expBody1','expTitle1','expBody2','expTitle2','expBody3','expTitle3','image'
     ];
 
 

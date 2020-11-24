@@ -16,6 +16,7 @@
 //});
 Route::prefix('/')->namespace('Frontend')->name('frontend.')->group( function () {
     Route::get('/', 'FrontendController@index')->name('index');
+    Route::get('/resume/{slug}', 'FrontendController@resume')->name('resume');
 });
 
 Auth::routes();

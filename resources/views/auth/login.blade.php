@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Kapella Bootstrap Admin Dashboard Template</title>
+    <title>Admin Panel | Login</title>
     <!-- base:css -->
     <link rel="stylesheet" href="{{asset('assets/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets//vendors/base/vendor.bundle.base.css')}}">
@@ -27,10 +27,10 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo">
-                                <img src="../../images/logo.svg" alt="logo">
+                                <img src="{{asset('assets/images/adminpanel.jpg')}}" style="margin-left: 25%" alt="Backend">
                             </div>
                             <h4>Hello! let's get started</h4>
-                            <h6 class="font-weight-light">Sign in to continue.</h6>
+                            <h6 class="font-weight-light">Sign in to continue.</h6><br>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group has-feedback">

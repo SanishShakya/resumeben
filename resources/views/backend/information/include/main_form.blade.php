@@ -23,6 +23,11 @@
     @include('backend.includes.form_error', ['field' => 'email'])
 </div>
 <div class="form-group">
+    {!! Form::label('slug', 'Slug') !!}
+    {!! Form::text('slug', null,['placeholder' => 'Enter Slug','class' => 'form-control']) !!}
+    @include('backend.includes.form_error', ['field' => 'slug'])
+</div>
+<div class="form-group">
     {!! Form::label('detail', 'Details') !!}
     {!! Form::textarea('detail', null,['placeholder' => 'Enter Details','class' => 'form-control']) !!}
 </div>

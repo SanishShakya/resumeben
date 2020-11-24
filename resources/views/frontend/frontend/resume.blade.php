@@ -2,13 +2,7 @@
 <html lang="en">
 <head>
 
-    <title>@foreach($main_introduction as $introduction)
-            @if($introduction->count()>0)
-                {{$introduction->fullName}}
-
-            @endif
-
-        @endforeach Resume | CM Page</title>
+    <title>Ben Resume | CM Page</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -53,13 +47,13 @@
                     <a href="#intro" class="nav-link smoothScroll">Resume</a>
                     @foreach($menu_introduction as $introductionMenu)
                         @if($introductionMenu->count()>0)
-                         <ul class="navbar-nav mx-auto">
+                            <ul class="navbar-nav mx-auto">
 
                                 <li class="nav-link smoothScroll">
                                     <a href="{{route('frontend.resume',$introductionMenu->slug)}}" class="nav-link smoothScroll">{{$introductionMenu->fullName}}</a>
                                 </li>
 
-                         </ul>
+                            </ul>
                         @endif
 
                     @endforeach
@@ -93,33 +87,16 @@
         <div class="row">
 
             <div class="mx-auto col-lg-5 col-md-5 col-10">
-                @foreach($main_introduction as $introduction)
-                    @if($introduction->count()>0)
-                <img src="{{asset('backend/images/information/'.$introduction->image)}}" class="img-fluid" alt="Ben Resume HTML Template">
-                    @endif
-
-                @endforeach
+                        <img src="{{asset('backend/images/information/'.$data['introductions']->image)}}" class="img-fluid" alt="Ben Resume HTML Template">
             </div>
 
             <div class="d-flex flex-column justify-content-center align-items-center col-lg-7 col-md-7 col-12">
                 <div class="hero-text">
 
-                    <h1 class="hero-title">👋 @foreach($main_introduction as $introduction)
-                            @if($introduction->count()>0)
-                                {{$introduction->fullName}}
-
-                            @endif
-
-                        @endforeach, a digital nomad</h1>
+                    <h1 class="hero-title">👋 {{$data['introductions']->fullName}}, a digital nomad</h1>
 
                     <a href="#" class="email-link">
-                        @foreach($main_introduction as $introduction)
-                                        @if($introduction->count()>0)
-                                                {{$introduction->email}}
-
-                                        @endif
-
-                        @endforeach
+                        {{$data['introductions']->email}}
                     </a>
 
                 </div>
@@ -135,54 +112,18 @@
         <div class="row">
 
             <div class="col-lg-6 col-md-6 col-12">
-                <h3 class="mb-4">@foreach($main_introduction as $introduction)
-                        @if($introduction->count()>0)
-                            {{$introduction->heading}}
+                <h3 class="mb-4">{{$data['introductions']->heading}}</h3>
 
-                        @endif
-
-                    @endforeach</h3>
-
-                <p>@foreach($main_introduction as $introduction)
-                        @if($introduction->count()>0)
-                            {{$introduction->detail}}
-
-                        @endif
-
-                    @endforeach</p>
+                <p>{{$data['introductions']->detail}}</p>
 
                 <ul class="mt-4 mb-5 mb-lg-0 profile-list list-unstyled">
-                    <li><strong>Full Name :</strong> @foreach($main_introduction as $introduction)
-                            @if($introduction->count()>0)
-                                {{$introduction->fullName}}
+                    <li><strong>Full Name :</strong>{{$data['introductions']->fullName}}</li>
 
-                            @endif
+                    <li><strong>Date of Birth:</strong>{{$data['introductions']->dob}}</li>
 
-                        @endforeach </li>
+                    <li><strong>Website :</strong>{{$data['introductions']->website}}</li>
 
-                    <li><strong>Date of Birth:</strong> @foreach($main_introduction as $introduction)
-                            @if($introduction->count()>0)
-                                {{$introduction->dob}}
-
-                            @endif
-
-                        @endforeach</li>
-
-                    <li><strong>Website :</strong> @foreach($main_introduction as $introduction)
-                            @if($introduction->count()>0)
-                                {{$introduction->website}}
-
-                            @endif
-
-                        @endforeach</li>
-
-                    <li><strong>Email :</strong> @foreach($main_introduction as $introduction)
-                            @if($introduction->count()>0)
-                                {{$introduction->email}}
-
-                            @endif
-
-                        @endforeach</li>
+                    <li><strong>Email :</strong>{{$data['introductions']->email}}</li>
                 </ul>
             </div>
 
@@ -193,53 +134,18 @@
         </div>
         <div class="row about-third">
             <div class="col-lg-4 col-md-4 col-12">
-                <h3>@foreach($main_introduction as $introduction)
-                        @if($introduction->count()>0)
-                            {{$introduction->expTitle1}}
-
-                        @endif
-
-                    @endforeach</h3>
-                <p>@foreach($main_introduction as $introduction)
-                        @if($introduction->count()>0)
-                            {{$introduction->expBody1}}
-
-                        @endif
-
-                    @endforeach</p>
+                <h3>{{$data['introductions']->expTitle1}}</h3>
+                <p>{{$data['introductions']->expBody1}}</p>
             </div>
             <div class="col-lg-4 col-md-4 col-12">
-                <h3>@foreach($main_introduction as $introduction)
-                        @if($introduction->count()>0)
-                            {{$introduction->expTitle2}}
-
-                        @endif
-
-                    @endforeach</h3>
-                <p>@foreach($main_introduction as $introduction)
-                        @if($introduction->count()>0)
-                            {{$introduction->expBody2}}
-
-                        @endif
-
-                    @endforeach</p>
+                <h3>{{$data['introductions']->expTitle2}}</h3>
+                <p>{{$data['introductions']->expBody2}}</p>
             </div>
             <div class="col-lg-4 col-md-4 col-12">
-                <h3>@foreach($main_introduction as $introduction)
-                        @if($introduction->count()>0)
-                            {{$introduction->expTitle3}}
-
-                        @endif
-
-                    @endforeach</h3>
-                <p>@foreach($main_introduction as $introduction)
-                        @if($introduction->count()>0)
-                            {{$introduction->expBody3}}
-
-                        @endif
-
-                    @endforeach</p>
+                <h3>{{$data['introductions']->expTitle3}}</h3>
+                <p>{{$data['introductions']->expBody3}}</p>
             </div>
+
         </div>
     </div>
 </section>
@@ -255,25 +161,25 @@
 
                 <div class="owl-carousel owl-theme" id="testimonials-carousel">
 
-                        @foreach($main_review as $review)
-                            @if($review->count()>0)
+                    @foreach($main_review as $review)
+                        @if($review->count()>0)
                             <div class="item">
-                        <div class="testimonials-thumb d-flex">
-                            <div class="testimonials-image">
-                                <img src="{{asset('backend/images/review/'.$review->image)}}" class="img-fluid" alt="testimonials image">
+                                <div class="testimonials-thumb d-flex">
+                                    <div class="testimonials-image">
+                                        <img src="{{asset('backend/images/review/'.$review->image)}}" class="img-fluid" alt="testimonials image">
+                                    </div>
+
+                                    <div class="testimonials-info">
+                                        <p>{{$review->description}}</p>
+
+                                        <h6 class="mb-0">{{$review->name}}</h6>
+                                        <span>{{$review->profession}}</span>
+                                    </div>
+                                </div>
                             </div>
+                            @endif
 
-                            <div class="testimonials-info">
-                                <p>{{$review->description}}</p>
-
-                                <h6 class="mb-0">{{$review->name}}</h6>
-                                <span>{{$review->profession}}</span>
-                            </div>
-                        </div>
-                    </div>
-                                @endif
-
-                                @endforeach</p>
+                            @endforeach</p>
 
                 </div>
 
@@ -302,21 +208,21 @@
 
 
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    {{$faq->questions}}
-                                </button>
-                            </h2>
-                        </div>
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            {{$faq->questions}}
+                                        </button>
+                                    </h2>
+                                </div>
 
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <p>{{$faq->answers}}</p>
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <p>{{$faq->answers}}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
                         @endif
                     @endforeach

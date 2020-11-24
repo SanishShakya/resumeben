@@ -20,4 +20,10 @@ class FrontendController extends FrontendBaseController
 
         return view($this->loadDataToView('frontend.frontend.index'),compact('data'));
     }
+    function resume($slug){
+        $data['introductions'] = Introduction::where('slug',$slug)->first();
+        $data['reviews'] = Review::all();
+        $data['faqs'] = Faq::all();
+        return view($this->loadDataToView('frontend.frontend.resume'),compact('data'));
+    }
 }

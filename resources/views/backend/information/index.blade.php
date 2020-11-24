@@ -10,7 +10,9 @@
       <div class="box-header with-border">
         <h3 class="box-title">
           {{$panel}} {{$page_title}}
-         </h3>
+            <a href="{{route($base_route . '.create')}}" class="btn btn-info"> <i class="fa fa-plus"></i> Create {{$panel}} </a>
+
+        </h3>
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                   title="Collapse">

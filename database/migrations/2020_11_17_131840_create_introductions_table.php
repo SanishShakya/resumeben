@@ -20,6 +20,7 @@ class CreateIntroductionsTable extends Migration
             $table->string('website');
             $table->longText('detail')->nullable();
             $table->string('email');
+            $table->string('slug')->unique();
             $table->string('heading');
             $table->string('expBody1');
             $table->string('expTitle1');
