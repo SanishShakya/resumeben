@@ -3,6 +3,8 @@
 namespace App\Model;
 
 use App\User;
+use App\Model\Role;
+use App\Model\Module;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

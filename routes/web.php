@@ -22,7 +22,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::namespace('Backend') -> name('backend.') -> middleware('auth')->prefix('backend/')->  group(function() {
+Route::namespace('Backend') -> name('backend.') -> middleware('permission') ->middleware('auth') -> prefix('backend/')->  group(function() {
     /*route for product controller*/
     Route::resource('faq','FaqController');
     Route::resource('review','ReviewController');
