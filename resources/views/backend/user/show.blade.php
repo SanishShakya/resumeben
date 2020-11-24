@@ -32,6 +32,10 @@
             <th>Name</th>
             <td>{{$data['row']->name}}</td>
           </tr>
+            <tr>
+                <th>Role</th>
+                <td>{{$data['row']->roleName->name}}</td>
+            </tr>
           <tr>
             <th>Status</th>
             <td>

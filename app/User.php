@@ -41,4 +41,7 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+    function  roleName(){
+        return $this->hasOne(User::class,'id','created_by');
+    }
 }

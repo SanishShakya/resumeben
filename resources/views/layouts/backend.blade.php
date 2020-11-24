@@ -24,7 +24,7 @@
     <div class="horizontal-menu">
         <nav class="navbar top-navbar col-lg-12 col-12">
             <div class="container-fluid">
-{{--                <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">--}}
+               <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">--}}
                     <ul class="navbar-nav navbar-nav-left">
 
                     </ul>

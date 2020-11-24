@@ -61,50 +61,50 @@ class PermissionSeeder extends Seeder
             'created_by' => 2,
         ]);
         \Illuminate\Support\Facades\DB::table('permissions')->insert([
-            'name' => 'Introduction Create',
-            'route' => 'backend.introduction.create',
+            'name' => 'Information Create',
+            'route' => 'backend.information.create',
             'module_id' => 2,
             'status' => 1,
             'created_by' => 2,
         ]);
         \Illuminate\Support\Facades\DB::table('permissions')->insert([
-            'name' => 'Introduction Index',
-            'route' => 'backend.introduction.index',
+            'name' => 'Information Index',
+            'route' => 'backend.information.index',
             'module_id' => 2,
             'status' => 1,
             'created_by' => 2,
         ]);
         \Illuminate\Support\Facades\DB::table('permissions')->insert([
-            'name' => 'Introduction Store',
-            'route' => 'backend.introduction.store',
+            'name' => 'Information Store',
+            'route' => 'backend.information.store',
             'module_id' => 2,
             'status' => 1,
             'created_by' => 2,
         ]);
         \Illuminate\Support\Facades\DB::table('permissions')->insert([
-            'name' => 'Introduction Edit',
-            'route' => 'backend.introduction.edit',
+            'name' => 'Information Edit',
+            'route' => 'backend.information.edit',
             'module_id' => 2,
             'status' => 1,
             'created_by' => 2,
         ]);
         \Illuminate\Support\Facades\DB::table('permissions')->insert([
-            'name' => 'Introduction Update',
-            'route' => 'backend.introduction.update',
+            'name' => 'Information Update',
+            'route' => 'backend.information.update',
             'module_id' => 2,
             'status' => 1,
             'created_by' => 2,
         ]);
         \Illuminate\Support\Facades\DB::table('permissions')->insert([
-            'name' => 'Introduction Delete',
-            'route' => 'backend.introduction.destroy',
+            'name' => 'Information Delete',
+            'route' => 'backend.information.destroy',
             'module_id' => 2,
             'status' => 1,
             'created_by' => 2,
         ]);
         \Illuminate\Support\Facades\DB::table('permissions')->insert([
-            'name' => 'Introduction Show',
-            'route' => 'backend.introduction.show',
+            'name' => 'Information Show',
+            'route' => 'backend.information.show',
             'module_id' => 2,
             'status' => 1,
             'created_by' => 2,
@@ -351,6 +351,20 @@ class PermissionSeeder extends Seeder
         \Illuminate\Support\Facades\DB::table('permissions')->insert([
             'name' => 'Role Show',
             'route' => 'backend.role.show',
+            'module_id' => 7,
+            'status' => 1,
+            'created_by' => 2,
+        ]);
+        \Illuminate\Support\Facades\DB::table('permissions')->insert([
+            'name' => 'Role Permisssion',
+            'route' => 'backend.role.permission',
+            'module_id' => 7,
+            'status' => 1,
+            'created_by' => 2,
+        ]);
+        \Illuminate\Support\Facades\DB::table('permissions')->insert([
+            'name' => 'Role Assign Permission',
+            'route' => 'backend.role.assign_permission',
             'module_id' => 7,
             'status' => 1,
             'created_by' => 2,

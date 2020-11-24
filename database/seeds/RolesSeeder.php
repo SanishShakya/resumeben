@@ -12,9 +12,8 @@ class RolesSeeder extends Seeder
     public function run()
     {
         \Illuminate\Support\Facades\DB::table('roles')->insert([
+            'id' => '1',
             'name' => 'Super Admin',
-            'created_by' => 2,
-            'updated_by' => 2,
             'status' => 1,
         ]);
     }
