@@ -17,7 +17,6 @@ class FrontendController extends FrontendBaseController
         $data['introductions'] = Introduction::all();
         $data['reviews'] = Review::all();
         $data['faqs'] = Faq::all();
-//
         return view($this->loadDataToView('frontend.frontend.index'),compact('data'));
     }
     function resume($slug){
@@ -25,5 +24,11 @@ class FrontendController extends FrontendBaseController
         $data['reviews'] = Review::all();
         $data['faqs'] = Faq::all();
         return view($this->loadDataToView('frontend.frontend.resume'),compact('data'));
+    }
+    function list(){
+        $data['introductions'] = Introduction::all();
+        $data['reviews'] = Review::all();
+        $data['faqs'] = Faq::all();
+        return view($this->loadDataToView('frontend.frontend.list'),compact('data'));
     }
 }

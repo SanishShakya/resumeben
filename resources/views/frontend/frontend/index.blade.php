@@ -50,19 +50,7 @@
                     <a href="#intro" class="nav-link smoothScroll">Introduction</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#intro" class="nav-link smoothScroll">Resume</a>
-                    @foreach($menu_introduction as $introductionMenu)
-                        @if($introductionMenu->count()>0)
-                         <ul class="navbar-nav mx-auto">
-
-                                <li class="nav-link smoothScroll">
-                                    <a href="{{route('frontend.resume',$introductionMenu->slug)}}" class="nav-link smoothScroll">{{$introductionMenu->fullName}}</a>
-                                </li>
-
-                         </ul>
-                        @endif
-
-                    @endforeach
+                    <a href="{{route('frontend.list')}}" class="nav-link smoothScroll">Resume</a>
                 </li>
                 <li class="nav-item">
                     <a href="#about" class="nav-link smoothScroll">About Me</a>
@@ -243,6 +231,7 @@
         </div>
     </div>
 </section>
+
 
 
 <!-- TESTIMONIAL -->
