@@ -125,10 +125,11 @@ class InformationController extends BackendBaseController
         $data['row'] = Introduction::find($id);
         $request->request->add(['updated_by' => auth()->user()->id]);
         $data['row']->update($request->all());
-        $data['row']->categories()->attach($request->input('category_id'));
+        $data['row']->update($request->input('category_id'));
         return redirect()->route($this->base_route . '.index')->with('success',$this->panel . ' updated successfully');;
 
     }
+
 
     /**
      * Remove the specified resource from storage.

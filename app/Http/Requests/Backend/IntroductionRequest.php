@@ -24,6 +24,7 @@ class IntroductionRequest extends FormRequest
     public function rules()
     {
         return [
+            'category.*' => 'exists:tags,id',
            'fullName' => 'required',
             'dob' => 'required',
             'heading' => 'required',
