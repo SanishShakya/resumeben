@@ -32,10 +32,10 @@ class FrontendController extends FrontendBaseController
         $data['faqs'] = Faq::all();
         return view($this->loadDataToView('frontend.frontend.category'),compact('data'));
     }
-    function list(){
-        $data['introductions'] = Introduction::all();
-        $data['reviews'] = Review::all();
-        $data['faqs'] = Faq::all();
-        return view($this->loadDataToView('frontend.frontend.list'),compact('data'));
-    }
+//    function list(){
+//        $data['introductions'] = Introduction::all();
+//        $data['reviews'] = Review::all();
+//        $data['faqs'] = Faq::all();
+//        return view($this->loadDataToView('frontend.frontend.list'),compact('data'));
+//    }
 }

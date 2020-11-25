@@ -16,8 +16,8 @@
 //});
 Route::prefix('/')->namespace('Frontend')->name('frontend.')->group( function () {
     Route::get('/', 'FrontendController@index')->name('index');
-    Route::get('/list', 'FrontendController@list')->name('list');
-    Route::get('/{slug}', 'FrontendController@category')->name('category');
+   // Route::get('/list', 'FrontendController@list')->name('list');
+    Route::get('/category/{slug}', 'FrontendController@category')->name('category');
     Route::get('/resume/{slug}','FrontendController@resume')->name('resume');
 });
 

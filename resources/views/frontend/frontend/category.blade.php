@@ -50,7 +50,7 @@
                     <a href="#intro" class="nav-link smoothScroll">Introduction</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('frontend.list')}}" class="nav-link smoothScroll">Resume</a>
+                    <a href="#" class="nav-link smoothScroll">Resume</a>
                     <ul>
                         @foreach($main_category as $category)
                             @if($category->count()>0)
