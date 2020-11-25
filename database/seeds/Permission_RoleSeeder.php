@@ -11,7 +11,7 @@ class Permission_RoleSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 51; $i++) {
+        for ($i = 0; $i < 58; $i++) {
 
             \Illuminate\Support\Facades\DB::table('permission_role')->insert([
                 'permission_id' => 1 + $i,

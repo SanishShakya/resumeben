@@ -25,9 +25,8 @@ class FaqController extends BackendBaseController
     {
         $this->page_title = 'List';
         $this->page_method = 'index';
-        $data['sold'] = Faq::all()->where('status', '=', 1);
         try{
-            $data['rows'] = Faq::all();
+            $data['rows'] = Faq::orderBy('created_at','desc')->get();
             return view($this->loadDataToView($this->view_path.'.index'),compact('data'));
 //            return view('backend.faq.index',compact('data'));
         }catch (Exception $e) {

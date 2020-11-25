@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Model\Category;
 use App\Model\Faq;
 use App\Model\Introduction;
 use App\Model\Review;
@@ -18,6 +19,9 @@ class FrontendBaseController extends Controller
 
             $reviews = Review::where('status',1)->get();
             $view->with('main_review',$reviews);
+
+            $categories = Category::where('status',1)->get();
+            $view->with('main_category',$categories);
 
             $introductionMenu = Introduction::where('status',1)->get();
             $view->with('menu_introduction',$introductionMenu);

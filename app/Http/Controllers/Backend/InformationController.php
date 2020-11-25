@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\IntroductionRequest;
+use App\Model\Category;
 use App\Model\Introduction;
 use Illuminate\Http\Request;
 use Mockery\Exception;
@@ -33,7 +34,7 @@ class InformationController extends BackendBaseController
         $this->page_method = 'index';
 
         try{
-            $data['rows'] = Introduction::all();
+            $data['rows'] = Introduction::orderBy('created_at','desc')->get();
             return view($this->loadDataToView($this->view_path.'.index'),compact('data'));
 //            return view('backend.tag.index',compact('data'));
         }catch (Exception $e) {
@@ -50,7 +51,8 @@ class InformationController extends BackendBaseController
     {
         $this->page_title = 'Create';
         $this->page_method = 'create';
-        return view($this->loadDataToView($this->view_path.'.create'));
+        $data['categories'] = Category::pluck('name','id');
+        return view($this->loadDataToView($this->view_path.'.create'),compact('data'));
     }
 
     /**
@@ -67,6 +69,7 @@ class InformationController extends BackendBaseController
             $request->request->add(['created_by' => auth()->user()->id]);
             $record = Introduction::create($request->all());
             if ($record){
+                $record->categories()->attach($request->input('category_id'));
                 return redirect()->route($this->base_route . '.index')->with('success',$this->panel . ' created successfully');
 
             } else {
@@ -102,6 +105,7 @@ class InformationController extends BackendBaseController
     {
         $this->page_title = 'Edit';
         $this->page_method = 'edit';
+        $data['categories'] = Category::pluck('name','id');
         $data['row'] = Introduction::find($id);
         return view($this->loadDataToView($this->view_path.'.edit'),compact('data'));
     }
@@ -115,11 +119,13 @@ class InformationController extends BackendBaseController
      */
     public function update(Request $request, $id)
     {
+
         $image = $this->uploadImage($request,'information_image');
         $request->request->add(['image' => $image]);
         $data['row'] = Introduction::find($id);
         $request->request->add(['updated_by' => auth()->user()->id]);
         $data['row']->update($request->all());
+        $data['row']->categories()->attach($request->input('category_id'));
         return redirect()->route($this->base_route . '.index')->with('success',$this->panel . ' updated successfully');;
 
     }

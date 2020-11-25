@@ -38,7 +38,7 @@ class UserController extends BackendBaseController
         $this->page_method = 'index';
 
         try{
-            $data['rows'] = User::all();
+            $data['rows'] = User::orderBy('created_at','desc')->get();
             return view($this->loadDataToView($this->view_path.'.index'),compact('data'));
         }catch (Exception $e) {
             redirect()->route('home')->flash('exception', $e->getMessage());

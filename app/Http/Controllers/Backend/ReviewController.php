@@ -33,7 +33,7 @@ class ReviewController extends BackendBaseController
         $this->page_method = 'index';
 
         try{
-            $data['rows'] = Review::all();
+            $data['rows'] = Review::orderBy('created_at','desc')->get();
             return view($this->loadDataToView($this->view_path.'.index'),compact('data'));
 //            return view('backend.tag.index',compact('data'));
         }catch (Exception $e) {

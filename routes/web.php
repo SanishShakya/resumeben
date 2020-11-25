@@ -17,6 +17,7 @@
 Route::prefix('/')->namespace('Frontend')->name('frontend.')->group( function () {
     Route::get('/', 'FrontendController@index')->name('index');
     Route::get('/list', 'FrontendController@list')->name('list');
+    Route::get('/{slug}', 'FrontendController@category')->name('category');
     Route::get('/resume/{slug}','FrontendController@resume')->name('resume');
 });
 
@@ -29,6 +30,7 @@ Route::namespace('Backend') -> name('backend.') -> middleware('auth') -> middlew
     Route::resource('faq','FaqController');
     Route::resource('review','ReviewController');
     Route::resource('information','InformationController');
+    Route::resource('category','CategoryController');
     /* route for information controller*/
     Route::get('information/create','InformationController@create')->name('information.create');
     Route::post('information','InformationController@store')->name('information.store');
@@ -68,7 +70,14 @@ Route::namespace('Backend') -> name('backend.') -> middleware('auth') -> middlew
     Route::get('module/{id}','ModuleController@show')->name('module.show');
     Route::get('module/{id}/edit','ModuleController@edit')->name('module.edit');
     Route::put('module/{id}','ModuleController@update')->name('module.update');
-
+    /* route for category controller*/
+    Route::get('category/create','CategoryController@create')->name('category.create');
+    Route::post('category','CategoryController@store')->name('category.store');
+    Route::get('category','CategoryController@index')->name('category.index');
+    Route::delete('category/{id}','CategoryController@destroy')->name('category.destroy');
+    Route::get('category/{id}','CategoryController@show')->name('category.show');
+    Route::get('category/{id}/edit','CategoryController@edit')->name('category.edit');
+    Route::put('category/{id}','CategoryController@update')->name('category.update');
     /* route for permission controller*/
     Route::get('permission/create','PermissionController@create')->name('permission.create');
     Route::post('permission','PermissionController@store')->name('permission.store');

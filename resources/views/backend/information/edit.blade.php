@@ -1,7 +1,17 @@
 @extends('layouts.backend')
 
 @section('title',$panel . ' ' . $page_title)
-
+@section('css')
+    <link rel="stylesheet" href="{{asset('assets/backend/bower_components/select2/dist/css/select2.min.css')}}"/>
+@endsection
+@section('js')
+    <script src="{{asset('assets/backend/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.category_id').select2();
+        });
+    </script>
+@endsection
 @section('content')
   <!-- Content Header (Page header) -->
   @include('backend.includes.breadcrumb')

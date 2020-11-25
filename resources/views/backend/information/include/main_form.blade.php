@@ -4,6 +4,10 @@
     @include('backend.includes.form_error', ['field' => 'fullName'])
 </div>
 <div class="form-group">
+    {!! Form::label('category_id', 'Category') !!}
+    {!! Form::select('category_id[]', $data['categories'], null, ['class' => 'form-control category_id','multiple' => 'multiple','style' => 'width: 100%'])!!}
+</div>
+<div class="form-group">
     {!! Form::label('website', 'Website') !!}
     {!! Form::text('website', null,['placeholder' => 'Enter Webite','class' => 'form-control']) !!}
     @include('backend.includes.form_error', ['field' => 'website'])

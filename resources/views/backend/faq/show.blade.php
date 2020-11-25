@@ -11,8 +11,10 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
-          <h1 class="card-description" style="text-align: center;">Details of {{$data['row']->fullName}}</h1>
-
+          <h3 class="box-title">
+              {{$panel}} {{$page_title}}
+              <a href="{{route($base_route . '.index')}}" class="btn btn-success"> <i class="fa fa-list"></i> List {{$panel}} </a>
+          </h3>
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                   title="Collapse">

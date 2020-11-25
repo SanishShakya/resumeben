@@ -55,5 +55,11 @@ class ModuleSeeder extends Seeder
             'status' => 1,
             'created_by' => 2,
         ]);
+        \Illuminate\Support\Facades\DB::table('modules')->insert([
+            'name' => 'Category Management',
+            'route' => 'backend.category.index',
+            'status' => 1,
+            'created_by' => 2,
+        ]);
     }
 }

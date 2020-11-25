@@ -13,6 +13,7 @@
     <!-- plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
+    @yield('css')
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
@@ -144,6 +145,19 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a href="{{route('backend.category.index')}}" class="nav-link">
+                            <i class="mdi mdi-cube-outline menu-icon"></i>
+                            <span class="menu-title">Category Management</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="submenu">
+                            <ul>
+                                <li class="nav-item"><a class="nav-link" href="{{route('backend.category.create')}}"><i class="mdi mdi-library-plus"></i>Add Category</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('backend.category.index')}}"><i class="mdi mdi-view-list"></i> List Category</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{route('backend.review.index')}}" class="nav-link">
                             <i class="mdi mdi-cube-outline menu-icon"></i>
                             <span class="menu-title">Review Management</span>
@@ -172,6 +186,7 @@
 <!-- End plugin js for this page-->
 <!-- inject:js -->
 <script src="{{asset('assets/js/template.js')}}"></script>
+@yield('js')
 <!-- endinject -->
 <!-- plugin js for this page -->
 <!-- End plugin js for this page -->

@@ -60,6 +60,7 @@ class PermissionSeeder extends Seeder
             'status' => 1,
             'created_by' => 2,
         ]);
+
         \Illuminate\Support\Facades\DB::table('permissions')->insert([
             'name' => 'Information Create',
             'route' => 'backend.information.create',
@@ -366,6 +367,55 @@ class PermissionSeeder extends Seeder
             'name' => 'Role Assign Permission',
             'route' => 'backend.role.assign_permission',
             'module_id' => 7,
+            'status' => 1,
+            'created_by' => 2,
+        ]);
+        \Illuminate\Support\Facades\DB::table('permissions')->insert([
+            'name' => 'Category Create',
+            'route' => 'backend.category.create',
+            'module_id' => 8,
+            'status' => 1,
+            'created_by' => 2,
+        ]);
+        \Illuminate\Support\Facades\DB::table('permissions')->insert([
+            'name' => 'Category Index',
+            'route' => 'backend.category.index',
+            'module_id' => 8,
+            'status' => 1,
+            'created_by' => 2,
+        ]);
+        \Illuminate\Support\Facades\DB::table('permissions')->insert([
+            'name' => 'Category Store',
+            'route' => 'backend.category.store',
+            'module_id' => 8,
+            'status' => 1,
+            'created_by' => 2,
+        ]);
+        \Illuminate\Support\Facades\DB::table('permissions')->insert([
+            'name' => 'Category Edit',
+            'route' => 'backend.category.edit',
+            'module_id' => 8,
+            'status' => 1,
+            'created_by' => 2,
+        ]);
+        \Illuminate\Support\Facades\DB::table('permissions')->insert([
+            'name' => 'Category Update',
+            'route' => 'backend.category.update',
+            'module_id' => 8,
+            'status' => 1,
+            'created_by' => 2,
+        ]);
+        \Illuminate\Support\Facades\DB::table('permissions')->insert([
+            'name' => 'Category Delete',
+            'route' => 'backend.category.destroy',
+            'module_id' => 8,
+            'status' => 1,
+            'created_by' => 2,
+        ]);
+        \Illuminate\Support\Facades\DB::table('permissions')->insert([
+            'name' => 'Category Show',
+            'route' => 'backend.category.show',
+            'module_id' => 8,
             'status' => 1,
             'created_by' => 2,
         ]);
